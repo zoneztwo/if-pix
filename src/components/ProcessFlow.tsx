@@ -18,14 +18,15 @@ import {
   Rocket,
   ShoppingCart,
   Zap,
-  BarChart3
+  BarChart3,
+  LucideIcon
 } from 'lucide-react';
 
 interface Step {
   id: number;
   title: string;
   subtitle: string;
-  icon: any;
+  icon: LucideIcon;
   description: string;
   tech: string[];
   color: string;
@@ -253,18 +254,21 @@ const ProcessFlow = ({ sectorId = 'hizmet' }: { sectorId?: string }) => {
                           { label: 'Hemen Ara', href: 'tel:+90XXXXXXXXXX', icon: Phone, color: 'text-blue-500' },
                           { label: "WhatsApp", href: 'https://wa.me/90XXXXXXXXXX', isWA: true, color: 'text-green-500' },
                           { label: 'Toplantı', href: '/toplanti-talebi', icon: Calendar, color: 'text-purple-500' }
-                        ].map((item, i) => (
-                          <a key={i} href={item.href} className="flex items-center gap-3 p-2.5 hover:bg-white/5 rounded-xl transition-all group">
-                            <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${item.color} group-hover:bg-white/10`}>
-                              {item.isWA ? (
-                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.353-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.435 0 12.071a11.79 11.79 0 001.598 5.948L0 24l6.102-1.6a11.777 11.777 0 005.944 1.593h.005c6.637 0 12.032-5.436 12.05-12.072a11.812 11.812 0 00-3.536-8.442z"/></svg>
-                              ) : (
-                                <item.icon size={14} />
-                              )}
-                            </div>
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-white/80">{item.label}</span>
-                          </a>
-                        ))}
+                        ].map((item, i) => {
+                          const Icon = item.icon;
+                          return (
+                            <a key={i} href={item.href} className="flex items-center gap-3 p-2.5 hover:bg-white/5 rounded-xl transition-all group">
+                              <div className={`w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center ${item.color} group-hover:bg-white/10`}>
+                                {item.isWA ? (
+                                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.353-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.435 0 12.071a11.79 11.79 0 001.598 5.948L0 24l6.102-1.6a11.777 11.777 0 005.944 1.593h.005c6.637 0 12.032-5.436 12.05-12.072a11.812 11.812 0 00-3.536-8.442z"/></svg>
+                                ) : (
+                                  Icon && <Icon size={14} />
+                                )}
+                              </div>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-white/80">{item.label}</span>
+                            </a>
+                          );
+                        })}
                       </motion.div>
                     )}
                   </AnimatePresence>
