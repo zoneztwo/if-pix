@@ -84,7 +84,7 @@ const DigitalTraceEffect = ({ children }: { children: React.ReactNode }) => {
       <motion.div 
         initial={{ width: '0%' }}
         animate={{ width: isHovered ? '100%' : '0%' }}
-        transition={{ duration: 0.4, ease: [0.42, 0, 0.58, 1] as const }}}
+        transition={{ duration: 0.4, ease: [0.42, 0, 0.58, 1] as const }}
         className="absolute bottom-0 left-0 h-[2px] bg-primary shadow-[0_0_10px_#39ff5e]"
       />
     </div>

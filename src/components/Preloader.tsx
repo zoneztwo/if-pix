@@ -49,7 +49,7 @@ const Preloader = () => {
             <motion.div 
               initial={{ width: 0 }}
               animate={{ width: '100%' }}
-              transition={{ duration: 2, ease: [0.42, 0, 0.58, 1] as const }}}
+              transition={{ duration: 2, ease: [0.42, 0, 0.58, 1] as const }}
               className="absolute -bottom-4 left-0 h-[2px] bg-primary shadow-[0_0_15px_#39ff5e]"
             />
           </div>
