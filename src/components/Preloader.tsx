@@ -22,7 +22,7 @@ const Preloader = () => {
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
-            transition: { duration: 1, ease: "easeInOut" }
+            transition: { duration: 1, ease: [0.42, 0, 0.58, 1] }
           }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1d1d1b]"
         >
@@ -32,7 +32,7 @@ const Preloader = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ 
                 duration: 1.2, 
-                ease: "easeOut",
+                ease: [0, 0, 0.58, 1],
               }}
               className="relative z-10"
             >
@@ -49,7 +49,7 @@ const Preloader = () => {
             <motion.div 
               initial={{ width: 0 }}
               animate={{ width: '100%' }}
-              transition={{ duration: 2, ease: "easeInOut" }}
+              transition={{ duration: 2, ease: [0.42, 0, 0.58, 1] }}
               className="absolute -bottom-4 left-0 h-[2px] bg-primary shadow-[0_0_15px_#39ff5e]"
             />
           </div>

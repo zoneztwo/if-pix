@@ -9,7 +9,7 @@ import { Shield, Zap, Target, Users } from 'lucide-react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0, 0, 0.58, 1] } }
 };
 
 export default function HakkimizdaClient({ locale, dict }: { locale: 'tr' | 'en', dict: any }) {
