@@ -1,0 +1,57 @@
+{
+  "common": {
+    "loading": "Yükleniyor",
+    "explore": "Keşfet",
+    "process": "Süreç",
+    "agency": "Ajans",
+    "services": "Hizmetler",
+    "contact": "İletişim",
+    "explore_process": "Süreci Keşfet",
+    "get_info": "Bilgi Al",
+    "start": "Hemen Başlayalım",
+    "send": "Gönder",
+    "system_status": "Sistem Aktif",
+    "contact_options": "İletişime Geçin"
+  },
+  "hero": {
+    "span": "Geleceğin Web Standartları",
+    "title": "Piksel {word} Burada Başlar.",
+    "desc": "Markanızın dijital kimliğini, en yeni teknolojilerle yeniden inşa ediyoruz. Hızlı, modern ve etkileyici.",
+    "words": ["mükemmelliği", "geleceği", "estetiği", "etkiyi", "satışı", "gücü"],
+    "scroll": "Kaydır"
+  },
+  "about": {
+    "span": "// hikayemiz",
+    "title": "Dijitalde İz Bırakıyoruz.",
+    "desc1": "IFPIX olarak, piksellerin bir markanın geleceğini inşa eden temel taşlar olduğuna inanıyoruz.",
+    "desc2": "Geleneksel web tasarımını modern yazılım standartlarıyla harmanlayarak, kullanıcıyı merkeze alan deneyimler yaratıyoruz.",
+    "satisfaction": "Memnuniyet",
+    "projects": "Proje",
+    "all_story": "Tüm Hikayemiz"
+  },
+  "process_section": {
+    "span": "// işleyişimiz",
+    "title": "Süreci Keşfedin",
+    "desc": "Fikrinizden reklam yönetimine kadar olan tüm yolculuğu şeffaf bir şekilde yönetiyoruz.",
+    "button": "Süreç Hakkında Bilgi Al",
+    "steps": {
+      "planning": "Planlama",
+      "design": "Tasarım",
+      "seo": "SEO",
+      "sales": "Satış"
+    }
+  },
+  "services_section": {
+    "span": "// uzmanlık alanlarımız",
+    "title": "Size Neler Sunuyoruz?",
+    "desc": "Dijital dünyadaki varlığınızı en üst seviyeye taşımak için gereken tüm araçlara sahibiz.",
+    "items": [
+      { "title": "Web Tasarım", "desc": "Markanıza özel modern arayüzler." },
+      { "title": "Özel Yazılım", "desc": "Ölçeklenebilir teknik sistemler." },
+      { "title": "E-Ticaret", "desc": "Satış odaklı mağaza deneyimleri." },
+      { "title": "Performans Pazarlama", "desc": "Büyüme odaklı reklam yönetimi." },
+      { "title": "SEO Optimizasyonu", "desc": "Arama motoru görünürlük artışı." },
+      { "title": "Teknik Destek", "desc": "7/24 kesintisiz sistem izleme." }
+    ]
+  }
+}

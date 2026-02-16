@@ -1,0 +1,57 @@
+{
+  "common": {
+    "loading": "Loading",
+    "explore": "Explore",
+    "process": "Process",
+    "agency": "Agency",
+    "services": "Services",
+    "contact": "Contact",
+    "explore_process": "Explore Process",
+    "get_info": "Get Info",
+    "start": "Let's Start",
+    "send": "Send",
+    "system_status": "System Operational",
+    "contact_options": "Get in Touch"
+  },
+  "hero": {
+    "span": "Web Standards of the Future",
+    "title": "Pixel {word} Starts Here.",
+    "desc": "We rebuild your brand's digital identity with the latest technologies. Fast, modern, and impressive.",
+    "words": ["perfection", "future", "aesthetics", "impact", "sales", "power"],
+    "scroll": "Scroll"
+  },
+  "about": {
+    "span": "// our story",
+    "title": "We Leave a Digital Trace.",
+    "desc1": "At IFPIX, we believe that pixels are more than just small squares; they are the cornerstones building a brand's future.",
+    "desc2": "By blending traditional web design with modern software standards, we create digital experiences that put the user at the center.",
+    "satisfaction": "Satisfaction",
+    "projects": "Projects",
+    "all_story": "Our Full Story"
+  },
+  "process_section": {
+    "span": "// our workflow",
+    "title": "Explore the Process",
+    "desc": "We transparently manage the entire journey from your idea to ad management.",
+    "button": "Get Info About Process",
+    "steps": {
+      "planning": "Planning",
+      "design": "Design",
+      "seo": "SEO",
+      "sales": "Sales"
+    }
+  },
+  "services_section": {
+    "span": "// our expertise",
+    "title": "What Do We Offer?",
+    "desc": "We have all the tools necessary to take your digital presence to the next level.",
+    "items": [
+      { "title": "Web Design", "desc": "Custom modern interfaces for your brand." },
+      { "title": "Custom Software", "desc": "Scalable technical system solutions." },
+      { "title": "E-Commerce", "desc": "Sales-oriented digital store experiences." },
+      { "title": "Performance Marketing", "desc": "Growth strategies with Meta & Google ads." },
+      { "title": "SEO Optimization", "desc": "Increase your visibility in search engines." },
+      { "title": "Technical Support", "desc": "24/7 uninterrupted system monitoring." }
+    ]
+  }
+}
