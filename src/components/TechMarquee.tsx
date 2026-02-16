@@ -17,7 +17,7 @@ const TechMarquee = () => {
         transition={{ 
           repeat: Infinity, 
           duration: 30, 
-          ease: [0, 0, 1, 1] 
+          ease: [0, 0, 1, 1] as const 
         }}
         className="flex gap-20 items-center pr-20"
       >
