@@ -15,142 +15,103 @@ const PixelBackground = () => {
     let animationFrameId: number;
     let mouse = { x: -1000, y: -1000 };
     
-    const pixelSize = 16;
-    const gap = 6;
-    const totalSize = pixelSize + gap;
+    const spacing = 32;
+    const pixelSize = 2.5; // Biraz daha büyük ve belirgin pikseller
     let pixels: Pixel[] = [];
-    let scanLines: ScanLine[] = [];
 
     class Pixel {
       x: number;
       y: number;
       opacity: number;
       targetOpacity: number;
-      scale: number;
-      targetScale: number;
-      glimmerDelay: number;
 
       constructor(x: number, y: number) {
         this.x = x;
         this.y = y;
-        this.opacity = 0.05;
-        this.targetOpacity = 0.05;
-        this.scale = 1;
-        this.targetScale = 1;
-        this.glimmerDelay = Math.random() * 500;
+        this.opacity = 0.08;
+        this.targetOpacity = 0.08;
       }
 
       update() {
-        const dx = mouse.x - this.x - pixelSize / 2;
-        const dy = mouse.y - this.y - pixelSize / 2;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
         
-        // Mouse interaction
-        if (distance < 180) {
-          this.targetOpacity = (1 - distance / 180) * 0.6;
-          this.targetScale = 1.5 - (distance / 180) * 0.5;
+        // Mouse yakınlığına göre belirgin parlama
+        if (dist < 180) {
+          this.targetOpacity = 0.8 * (1 - dist / 180);
         } else {
-          // Otonom glimmer (kırpışma) efekti
-          this.glimmerDelay--;
-          if (this.glimmerDelay <= 0) {
-            this.targetOpacity = 0.15;
-            if (this.opacity >= 0.14) {
-              this.targetOpacity = 0.05;
-              this.glimmerDelay = Math.random() * 600 + 200;
-            }
-          } else {
-            this.targetOpacity = 0.05;
+          // Otonom Ping (Daha sık ve parlak rastgele parlamalar)
+          if (Math.random() < 0.0003) {
+             this.opacity = 1.0; // Anlık tam parlama
           }
-          this.targetScale = 1;
+          this.targetOpacity = 0.08;
         }
 
-        // Smooth transitions
-        this.opacity += (this.targetOpacity - this.opacity) * 0.08;
-        this.scale += (this.targetScale - this.scale) * 0.1;
+        this.opacity += (this.targetOpacity - this.opacity) * 0.1;
       }
 
       draw() {
-        if (this.opacity < 0.01) return;
-        
-        const size = pixelSize * this.scale;
-        const offset = (size - pixelSize) / 2;
-        
+        // Ana Piksel (Daha belirgin yeşil)
         ctx!.fillStyle = `rgba(57, 255, 94, ${this.opacity})`;
-        ctx!.fillRect(this.x - offset, this.y - offset, size, size);
+        ctx!.fillRect(this.x - pixelSize / 2, this.y - pixelSize / 2, pixelSize, pixelSize);
         
-        // Üst katman parlama
-        if (this.scale > 1.2) {
-          ctx!.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.5})`;
-          ctx!.fillRect(this.x - offset + 2, this.y - offset + 2, 2, 2);
+        // Parlama Glow Efekti (Piksel aktifken etrafına ışık saçar)
+        if (this.opacity > 0.4) {
+          ctx!.fillStyle = `rgba(57, 255, 94, ${this.opacity * 0.3})`;
+          ctx!.fillRect(this.x - pixelSize, this.y - pixelSize, pixelSize * 2, pixelSize * 2);
         }
       }
     }
-
-    class ScanLine {
-      pos: number;
-      speed: number;
-      isVertical: boolean;
-
-      constructor(isVertical: boolean) {
-        this.isVertical = isVertical;
-        this.pos = 0;
-        this.speed = Math.random() * 2 + 1;
-      }
-
-      update() {
-        this.pos += this.speed;
-        if (this.isVertical && this.pos > canvas!.width) this.pos = -100;
-        if (!this.isVertical && this.pos > canvas!.height) this.pos = -100;
-      }
-
-      draw() {
-        const gradient = this.isVertical 
-          ? ctx!.createLinearGradient(this.pos, 0, this.pos + 100, 0)
-          : ctx!.createLinearGradient(0, this.pos, 0, this.pos + 100);
-        
-        gradient.addColorStop(0, 'rgba(57, 255, 94, 0.1)');
-        gradient.addColorStop(0.5, 'rgba(57, 255, 94, 0)');
-        
-        ctx!.fillStyle = gradient;
-        if (this.isVertical) {
-          ctx!.fillRect(this.pos, 0, 100, canvas!.height);
-        } else {
-          ctx!.fillRect(0, this.pos, canvas!.width, 100);
-        }
-      }
-    }
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    };
 
     const init = () => {
       pixels = [];
-      scanLines = [new ScanLine(true), new ScanLine(false)];
-      const cols = Math.ceil(canvas.width / totalSize);
-      const rows = Math.ceil(canvas.height / totalSize);
-
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          pixels.push(new Pixel(i * totalSize, j * totalSize));
+      for (let x = spacing; x < canvas.width; x += spacing) {
+        for (let y = spacing; y < canvas.height; y += spacing) {
+          pixels.push(new Pixel(x, y));
         }
       }
     };
 
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      
+      ctx.scale(dpr, dpr);
+      
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+      
+      init();
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
     };
 
     const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width / (window.devicePixelRatio || 1), canvas.height / (window.devicePixelRatio || 1));
 
-      scanLines.forEach(line => {
-        line.update();
-        line.draw();
-      });
+      // Teknik Crosshair (Daha belirgin takip çizgileri)
+      if (mouse.x > 0) {
+        ctx.strokeStyle = 'rgba(57, 255, 94, 0.12)';
+        ctx.lineWidth = 0.5;
+        
+        ctx.beginPath();
+        ctx.moveTo(0, mouse.y);
+        ctx.lineTo(canvas.width, mouse.y);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(mouse.x, 0);
+        ctx.lineTo(mouse.x, canvas.height);
+        ctx.stroke();
+      }
 
       pixels.forEach(p => {
         p.update();
@@ -174,11 +135,21 @@ const PixelBackground = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none opacity-50"
-      style={{ mixBlendMode: 'screen' }}
-    />
+    <div className="absolute inset-0 pointer-events-none z-0">
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full block"
+        style={{ mixBlendMode: 'screen' }}
+      />
+      {/* İnce Grid Overlay (Daha net bir grid hissi) */}
+      <div 
+        className="absolute inset-0 opacity-[0.06] pointer-events-none"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(57, 255, 94, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 94, 0.4) 1px, transparent 1px)`,
+          backgroundSize: '32px 32px'
+        }}
+      />
+    </div>
   );
 };
 

@@ -4,9 +4,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const techs = [
+  "SEO", "Meta Ads", "Google Ads", "Performans Pazarlama",
   "Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", 
-  "Node.js", "PostgreSQL", "Meta Pixel", "Google Ads", "Conversion API",
-  "Cloudflare", "Docker", "Redux", "Python", "SEO Expert"
+  "E-Ticaret", "Web Tasarım", "SEO Expert", "Conversion API",
+  "Cloudflare", "Meta Pixel", "Google Analytics", "Digital Strategy"
 ];
 
 const TechMarquee = () => {

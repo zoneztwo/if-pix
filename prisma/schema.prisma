@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id               String   @id @default(cuid())
+  name             String
+  phone            String
+  email            String
+  plan             String
+  features         Json     
+  marketing        Json     
+  marketingConsent Boolean  @default(false) // Kampanya onayı
+  status           String   @default("BEKLIYOR") 
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model User {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String   @db.Text // Kısa özet
+  content     String   @db.LongText // Ana içerik
+  image       String?  // Kapak görseli URL
+  category    String   @default("Genel")
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

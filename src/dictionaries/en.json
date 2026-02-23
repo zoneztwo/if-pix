@@ -1,14 +1,11 @@
 {
   "common": {
     "loading": "Loading",
-    "explore": "Explore",
-    "process": "Process",
     "agency": "Agency",
     "services": "Services",
     "contact": "Contact",
-    "explore_process": "Explore Process",
     "get_info": "Get Info",
-    "start": "Let's Start",
+    "start": "Get a Price Quote",
     "send": "Send",
     "system_status": "System Operational",
     "contact_options": "Get in Touch"
@@ -29,29 +26,136 @@
     "projects": "Projects",
     "all_story": "Our Full Story"
   },
-  "process_section": {
-    "span": "// our workflow",
-    "title": "Explore the Process",
-    "desc": "We transparently manage the entire journey from your idea to ad management.",
-    "button": "Get Info About Process",
-    "steps": {
-      "planning": "Planning",
-      "design": "Design",
-      "seo": "SEO",
-      "sales": "Sales"
-    }
-  },
   "services_section": {
     "span": "// our expertise",
-    "title": "What Do We Offer?",
+    "title": "Which Solution Do You Need?",
     "desc": "We have all the tools necessary to take your digital presence to the next level.",
     "items": [
-      { "title": "Web Design", "desc": "Custom modern interfaces for your brand." },
-      { "title": "Custom Software", "desc": "Scalable technical system solutions." },
-      { "title": "E-Commerce", "desc": "Sales-oriented digital store experiences." },
-      { "title": "Performance Marketing", "desc": "Growth strategies with Meta & Google ads." },
-      { "title": "SEO Optimization", "desc": "Increase your visibility in search engines." },
-      { "title": "Technical Support", "desc": "24/7 uninterrupted system monitoring." }
+      { "title": "Modern Web Design", "desc": "Custom, fast, and mobile-responsive modern interfaces." },
+      { "title": "Google & Meta Ads", "desc": "Sales-oriented, low-cost ad and performance management." },
+      { "title": "E-Commerce Solutions", "desc": "Professional stores optimized for conversion rates." },
+      { "title": "Technical SEO", "desc": "Optimization that lets you rank high in Google searches." },
+      { "title": "Custom Software", "desc": "Scalable and secure technical systems for your business." },
+      { "title": "24/7 Technical Support", "desc": "We are with you with constant monitoring and instant intervention." }
     ]
+  },
+  "pricing": {
+    "span": "// our plans",
+    "title": "Choose the Right Solution",
+    "desc": "Start your project today with transparent pricing.",
+    "plans": [
+      {
+        "name": "Landing Page",
+        "price": "Get a Quote",
+        "desc": "Single page, fast and effective sales-oriented design.",
+        "features": ["Mobile Responsive", "Fast Setup", "Basic SEO", "WhatsApp Integration"]
+      },
+      {
+        "name": "Corporate",
+        "price": "Get a Quote",
+        "desc": "Professional website reflecting your brand's prestige.",
+        "features": ["Fully Mobile Responsive", "Multi-language Support", "Advanced SEO", "Blog System", "1 Year Support", "WhatsApp Integration"]
+      },
+      {
+        "name": "E-Commerce",
+        "price": "Get a Quote",
+        "desc": "Infrastructure to sell your products globally.",
+        "features": [
+          "Fully Mobile Responsive",
+          "Payment System Integration",
+          "Advanced SEO Settings",
+          "Google Tools Setup",
+          "Wide Integration Support",
+          "Bulk Product Upload",
+          "XML Export & Import (Optional)",
+          "WhatsApp Integration",
+          "Blog System"
+        ]
+      }
+    ]
+  },
+  "interactive_form": {
+    "steps": {
+      "intro": {
+        "question": "In which area should we help you grow?",
+        "options": {
+          "ecommerce": "I Sell Products (E-commerce)",
+          "service": "I Provide Services (Appointment/Lead focused)"
+        }
+      },
+      "service_step_1": {
+        "question": "In which field do you want to grow your expertise or business?",
+        "options": [
+          "Health / Clinic / Aesthetic",
+          "Real Estate / Consulting",
+          "Education / Coaching",
+          "Law / Corporate Services",
+          "Other (Please specify)"
+        ],
+        "target_question": "What is your primary goal?",
+        "target_options": [
+          "Get more appointments",
+          "Increase phone calls",
+          "Establish brand awareness and prestige",
+          "Give my website a professional structure"
+        ]
+      },
+      "service_step_2": {
+        "question": "Do you have an existing website or an active ad account?",
+        "options": [
+          "I have a website but it doesn't bring sales/appointments.",
+          "I have no digital presence, I want it built from scratch.",
+          "I'm running ads but my budget is being wasted."
+        ],
+        "comm_question": "How do you currently communicate with your leads?",
+        "comm_options": [
+          "Only via WhatsApp.",
+          "Manually by phone calls.",
+          "I have an appointment system/secretary."
+        ]
+      },
+      "ecommerce_step_1": {
+        "question": "What is your basic need?",
+        "options": [
+          "I want to set up a new e-commerce site.",
+          "I want to increase my current sales with ads.",
+          "I want to automate my business with AI.",
+          "I want to renew my brand's visual identity (logo, graphics)."
+        ]
+      },
+      "ecommerce_step_2": {
+        "question": "Current Status Analysis",
+        "website_question": "Do you currently have a website?",
+        "budget_question": "What is your average monthly advertising budget?",
+        "budget_options": [
+          "10k - 30k TL",
+          "30k - 100k TL",
+          "100k TL +"
+        ],
+        "yes": "Yes",
+        "no": "No"
+      },
+      "ecommerce_step_3": {
+        "question": "What do you struggle with the most?",
+        "placeholder": "Finding customers, technical infrastructure, lack of time, etc."
+      },
+      "final": {
+        "title": "Final Step",
+        "desc": "Please enter your details so we can contact you.",
+        "submit": "Send Request",
+        "success_title": "Request Received!",
+        "success_desc": "Our analysis is complete. We will contact you as soon as possible."
+      }
+    },
+    "controls": {
+      "next": "Continue",
+      "back": "Back",
+      "skip": "Skip"
+    }
+  },
+  "cta_section": {
+    "title": "Ready to Grow Your Business Digitally?",
+    "desc": "Meet our website, SEO, and ad management solutions. Request your first free analysis today.",
+    "button": "Get Free Analysis"
   }
 }

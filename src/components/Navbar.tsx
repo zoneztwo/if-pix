@@ -5,12 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useSpring } from 'framer-motion';
-import { Menu, X, ArrowRight, Clock, Signal, Compass, Users, LayoutTemplate, Mail, Globe } from 'lucide-react';
+import { Menu, X, ArrowRight, Clock, Signal, Compass, Users, LayoutTemplate, Mail, Globe, FileText } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Süreç', href: '/#surec', icon: Compass },
-  { name: 'Ajans', href: '/hakkimizda', icon: Users },
+  { name: 'Paketler', href: '/#paketler', icon: Compass },
   { name: 'Hizmetler', href: '/#hizmetler', icon: LayoutTemplate },
+  { name: 'Blog', href: '/blog', icon: FileText },
   { name: 'İletişim', href: '/iletisim', icon: Mail },
 ];
 
@@ -21,6 +21,7 @@ const Navbar = () => {
   const [ping, setPing] = useState(12);
   
   const pathname = usePathname();
+  // Mevcut dili pathname'den güvenli bir şekilde alalım
   const currentLocale = pathname.split('/')[1] || 'tr';
 
   const { scrollY, scrollYProgress } = useScroll();
@@ -48,10 +49,10 @@ const Navbar = () => {
     };
   }, []);
 
-  const getLocalizedHref = (locale: string) => {
+  const getLocalizedHref = (newLocale: string) => {
     const segments = pathname.split('/');
-    segments[1] = locale;
-    return segments.join('/');
+    segments[1] = newLocale;
+    return segments.join('/') || `/${newLocale}`;
   };
 
   return (
@@ -68,13 +69,11 @@ const Navbar = () => {
           : 'bg-transparent border-transparent rounded-none scale-100'
       }`}>
         
-        {/* Scroll Progress Line */}
         <motion.div 
           className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary z-20 origin-left shadow-[0_0_10px_#39ff5e]"
           style={{ scaleX }}
         />
 
-        {/* Logo & Status Area */}
         <div className="flex items-center gap-6">
           <Link href={`/${currentLocale}`} className="relative group shrink-0">
             <motion.div
@@ -114,7 +113,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link 
@@ -131,7 +129,6 @@ const Navbar = () => {
             </Link>
           ))}
 
-          {/* Language Switcher */}
           <div className="flex items-center gap-2 ml-4 px-3 py-1 bg-white/5 rounded-full border border-white/5">
             <Globe size={12} className="text-white/20" />
             <Link 
@@ -150,59 +147,54 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* CTA Area */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           <Link 
-            href={`/${currentLocale}/#surec`}
-            className={`hidden sm:flex items-center gap-2 bg-primary text-background font-black uppercase tracking-widest rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(57,255,94,0.4)] group ${
-              scrolled ? 'px-4 py-2 text-[9px]' : 'px-5 py-2.5 text-[10px]'
+            href={`/${currentLocale}/iletisim`}
+            className={`flex items-center gap-2 bg-primary text-background font-black uppercase tracking-widest rounded-xl transition-all duration-500 hover:scale-105 group ${
+              scrolled ? 'px-4 py-2 text-[10px]' : 'px-5 py-2.5 text-[10px] md:text-[11px]'
             }`}
           >
-            Süreci Keşfet
+            <span className="hidden xs:inline">Hemen Başla</span>
+            <span className="xs:hidden">BAŞLA</span>
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </Link>
 
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-white/60 hover:text-white transition-colors"
+            className="p-2 text-white/60 hover:text-white transition-colors bg-white/5 rounded-xl border border-white/5 md:hidden"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="md:hidden absolute top-full left-6 right-6 mt-2 bg-[#1a1a18]/95 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl z-50"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden absolute top-[calc(100%+8px)] left-6 right-6 bg-background/95 backdrop-blur-2xl border border-white/10 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 p-4"
           >
-            <div className="flex flex-col p-4">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name}
                   href={`/${currentLocale}${link.href}`}
                   onClick={() => setIsOpen(false)}
-                  className="p-4 text-[12px] font-mono text-white/60 hover:text-primary hover:bg-white/5 rounded-xl transition-all flex items-center gap-3"
+                  className="p-5 text-[14px] font-black uppercase tracking-widest text-white/60 hover:text-primary hover:bg-primary/5 rounded-2xl transition-all flex items-center justify-between group"
                 >
-                  <link.icon size={16} className="text-primary/60" />
-                  {link.name}
+                  <div className="flex items-center gap-4">
+                    <link.icon size={18} className="text-primary/40 group-hover:text-primary" />
+                    {link.name}
+                  </div>
+                  <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                 </Link>
               ))}
-              <div className="flex items-center justify-center gap-6 py-4 border-t border-white/5 mt-2">
-                <Link href={getLocalizedHref('tr')} onClick={() => setIsOpen(false)} className={`text-xs font-bold ${currentLocale === 'tr' ? 'text-primary' : 'text-white/40'}`}>TURKISH</Link>
-                <Link href={getLocalizedHref('en')} onClick={() => setIsOpen(false)} className={`text-xs font-bold ${currentLocale === 'en' ? 'text-primary' : 'text-white/40'}`}>ENGLISH</Link>
+              <div className="flex items-center justify-around py-6 border-t border-white/5 mt-2">
+                <Link href={getLocalizedHref('tr')} onClick={() => setIsOpen(false)} className={`text-[10px] font-black tracking-widest p-3 rounded-xl border ${currentLocale === 'tr' ? 'bg-primary/10 border-primary/20 text-primary' : 'border-transparent text-white/20'}`}>TÜRKÇE</Link>
+                <Link href={getLocalizedHref('en')} onClick={() => setIsOpen(false)} className={`text-[10px] font-black tracking-widest p-3 rounded-xl border ${currentLocale === 'en' ? 'bg-primary/10 border-primary/20 text-primary' : 'border-transparent text-white/20'}`}>ENGLISH</Link>
               </div>
-              <Link 
-                href={`/${currentLocale}/#surec`}
-                onClick={() => setIsOpen(false)}
-                className="mt-4 p-4 bg-primary text-background text-center text-[11px] font-black uppercase tracking-widest rounded-xl"
-              >
-                Süreci Keşfet
-              </Link>
             </div>
           </motion.div>
         )}

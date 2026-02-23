@@ -31,12 +31,15 @@ export default function IletisimClient({ locale, dict }: { locale: 'tr' | 'en', 
   ];
 
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen bg-background overflow-hidden">
       <Navbar />
       
-      <div className="fixed inset-0 z-0">
-        <PixelBackground />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="sticky top-0 h-screen w-full">
+          <PixelBackground />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+        </div>
       </div>
 
       <section className="relative z-10 pt-40 pb-32 px-6">
@@ -108,7 +111,9 @@ export default function IletisimClient({ locale, dict }: { locale: 'tr' | 'en', 
         </div>
       </section>
 
-      <Footer />
+      <div className="relative z-20">
+        <Footer />
+      </div>
     </main>
   );
 }

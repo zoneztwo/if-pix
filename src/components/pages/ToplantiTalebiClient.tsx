@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PixelBackground from '@/components/PixelBackground';
-import ContactForm from '@/components/ContactForm';
+import InteractiveForm from '@/components/InteractiveForm';
 
 export default function ToplantiTalebiClient({ locale, dict }: { locale: 'tr' | 'en', dict: any }) {
   return (
@@ -46,7 +46,7 @@ export default function ToplantiTalebiClient({ locale, dict }: { locale: 'tr' | 
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <ContactForm />
+            <InteractiveForm dict={dict} locale={locale} />
           </motion.div>
         </div>
       </section>

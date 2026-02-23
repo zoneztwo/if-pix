@@ -1,14 +1,12 @@
 {
   "common": {
     "loading": "Yükleniyor",
-    "explore": "Keşfet",
-    "process": "Süreç",
     "agency": "Ajans",
     "services": "Hizmetler",
     "contact": "İletişim",
-    "explore_process": "Süreci Keşfet",
     "get_info": "Bilgi Al",
-    "start": "Hemen Başlayalım",
+    "start": "Fiyat Teklifi Al",
+    "more_info": "Daha Fazla Bilgi Al",
     "send": "Gönder",
     "system_status": "Sistem Aktif",
     "contact_options": "İletişime Geçin"
@@ -29,29 +27,136 @@
     "projects": "Proje",
     "all_story": "Tüm Hikayemiz"
   },
-  "process_section": {
-    "span": "// işleyişimiz",
-    "title": "Süreci Keşfedin",
-    "desc": "Fikrinizden reklam yönetimine kadar olan tüm yolculuğu şeffaf bir şekilde yönetiyoruz.",
-    "button": "Süreç Hakkında Bilgi Al",
-    "steps": {
-      "planning": "Planlama",
-      "design": "Tasarım",
-      "seo": "SEO",
-      "sales": "Satış"
-    }
-  },
   "services_section": {
     "span": "// uzmanlık alanlarımız",
-    "title": "Size Neler Sunuyoruz?",
+    "title": "Hangi Çözüme İhtiyacınız Var?",
     "desc": "Dijital dünyadaki varlığınızı en üst seviyeye taşımak için gereken tüm araçlara sahibiz.",
     "items": [
-      { "title": "Web Tasarım", "desc": "Markanıza özel modern arayüzler." },
-      { "title": "Özel Yazılım", "desc": "Ölçeklenebilir teknik sistemler." },
-      { "title": "E-Ticaret", "desc": "Satış odaklı mağaza deneyimleri." },
-      { "title": "Performans Pazarlama", "desc": "Büyüme odaklı reklam yönetimi." },
-      { "title": "SEO Optimizasyonu", "desc": "Arama motoru görünürlük artışı." },
-      { "title": "Teknik Destek", "desc": "7/24 kesintisiz sistem izleme." }
+      { "title": "Modern Web Tasarım", "desc": "Markanıza özel, hızlı ve mobil uyumlu modern arayüzler." },
+      { "title": "Google & Meta Ads", "desc": "Satış odaklı, düşük maliyetli reklam ve performans yönetimi." },
+      { "title": "E-Ticaret Çözümleri", "desc": "Dönüşüm oranı optimize edilmiş profesyonel mağazalar." },
+      { "title": "Teknik SEO", "desc": "Google sıralamalarında üst seviyelere çıkmanızı sağlayan optimizasyon." },
+      { "title": "Özel Yazılım", "desc": "İşletmenize özel ölçeklenebilir ve güvenli teknik sistemler." },
+      { "title": "7/24 Teknik Destek", "desc": "Kesintisiz izleme ve anında müdahale ile yanınızdayız." }
     ]
+  },
+  "pricing": {
+    "span": "// paketlerimiz",
+    "title": "Size Uygun Çözümü Seçin",
+    "desc": "Şeffaf fiyatlandırma ile projenizi bugün başlatın.",
+    "plans": [
+      {
+        "name": "Landing Page",
+        "price": "Teklif Alın",
+        "desc": "Tek sayfa, hızlı ve etkili satış odaklı tasarım.",
+        "features": ["Mobil Uyumlu", "Hızlı Kurulum", "Basic SEO", "WhatsApp Entegrasyonu"]
+      },
+      {
+        "name": "Kurumsal",
+        "price": "Teklif Alın",
+        "desc": "Marka prestijinizi yansıtan profesyonel web sitesi.",
+        "features": ["Tam Mobil Uyum", "Çoklu Dil Desteği", "Gelişmiş SEO", "Blog Sistemi", "1 Yıl Destek", "WhatsApp Entegrasyonu"]
+      },
+      {
+        "name": "E-Ticaret",
+        "price": "Teklif Alın",
+        "desc": "Ürünlerinizi tüm dünyaya satabileceğiniz altyapı.",
+        "features": [
+          "Tam Mobil Uyum",
+          "Ödeme Sistemi Entegrasyonu",
+          "Gelişmiş SEO Ayarları",
+          "Google Araçları Kurulumu",
+          "Geniş Entegrasyon Desteği",
+          "Toplu Ürün Yükleme",
+          "XML Dağıtımı & Çekimi (Opsiyonel)",
+          "WhatsApp Entegrasyonu",
+          "Blog Sistemi"
+        ]
+      }
+    ]
+  },
+  "interactive_form": {
+    "steps": {
+      "intro": {
+        "question": "Hangi alanda büyümenizi sağlayalım?",
+        "options": {
+          "ecommerce": "Ürün Satıyorum (E-ticaret)",
+          "service": "Hizmet Veriyorum (Randevu/Lead odaklı)"
+        }
+      },
+      "service_step_1": {
+        "question": "Hangi alanda uzmanlığınızı veya işletmenizi büyütmek istiyorsunuz?",
+        "options": [
+          "Sağlık / Klinik / Estetik",
+          "Gayrimenkul / Danışmanlık",
+          "Eğitim / Koçluk",
+          "Hukuk / Kurumsal Hizmetler",
+          "Diğer (Lütfen belirtin)"
+        ],
+        "target_question": "Öncelikli hedefiniz nedir?",
+        "target_options": [
+          "Daha fazla randevu almak",
+          "Telefon aramalarımı artırmak",
+          "Marka bilinirliği ve prestij sağlamak",
+          "Web sitemi profesyonel bir yapıya kavuşturmak"
+        ]
+      },
+      "service_step_2": {
+        "question": "Mevcut bir web siteniz veya aktif bir reklam hesabınız var mı?",
+        "options": [
+          "Web sitem var ama satış/randevu getirmiyor.",
+          "Hiçbir dijital varlığım yok, sıfırdan kurulmasını istiyorum.",
+          "Reklam veriyorum ama bütçem boşa gidiyor."
+        ],
+        "comm_question": "Şu an müşteri adaylarınızla nasıl iletişime geçiyorsunuz?",
+        "comm_options": [
+          "Sadece WhatsApp üzerinden.",
+          "Manuel olarak telefonla arayarak.",
+          "Bir randevu sistemim/sekreterim var."
+        ]
+      },
+      "ecommerce_step_1": {
+        "question": "Temel İhtiyaç Nedir?",
+        "options": [
+          "Yeni bir e-ticaret sitesi kurmak istiyorum.",
+          "Mevcut satışlarımı reklamlarla artırmak istiyorum.",
+          "İşlerimi yapay zeka ile otomatiğe bağlamak istiyorum.",
+          "Markamın görsel kimliğini (logo, grafik) yenilemek istiyorum."
+        ]
+      },
+      "ecommerce_step_2": {
+        "question": "Mevcut Durum Analizi",
+        "website_question": "Şu an bir web siteniz var mı?",
+        "budget_question": "Aylık ortalama reklam bütçeniz ne kadar?",
+        "budget_options": [
+          "10bin - 30bin TL",
+          "30bin - 100bin TL",
+          "100bin TL +"
+        ],
+        "yes": "Evet",
+        "no": "Hayır"
+      },
+      "ecommerce_step_3": {
+        "question": "En çok hangi konuda zorlanıyorsunuz?",
+        "placeholder": "Müşteri bulma, teknik altyapı, zaman yetersizliği vb."
+      },
+      "final": {
+        "title": "Son Adım",
+        "desc": "Sizinle iletişime geçebilmemiz için lütfen bilgilerinizi girin.",
+        "submit": "Talebi Gönder",
+        "success_title": "Talebiniz Alındı!",
+        "success_desc": "Analizimiz tamamlandı. En kısa sürede sizinle iletişime geçeceğiz."
+      }
+    },
+    "controls": {
+      "next": "Devam Et",
+      "back": "Geri",
+      "skip": "Atla"
+    }
+  },
+  "cta_section": {
+    "title": "İşinizi Dijitalde Büyütmeye Hazır mısınız?",
+    "desc": "Web sitesi, SEO ve reklam yönetimi çözümlerimizle tanışın. İlk ücretsiz analizinizi bugün talep edin.",
+    "button": "Ücretsiz Analiz Al"
   }
 }
