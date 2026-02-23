@@ -6,11 +6,18 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PixelBackground from '@/components/PixelBackground';
 import { Shield, Zap, Target, Users, Code2, Rocket, Globe2, Sparkles } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-  viewport: { once: true }
+  whileInView: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.8, 
+      ease: [0.16, 1, 0.3, 1] 
+    } 
+  }
 };
 
 export default function HakkimizdaClient({ locale, dict }: { locale: 'tr' | 'en', dict: any }) {
