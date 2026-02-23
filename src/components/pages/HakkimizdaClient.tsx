@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PixelBackground from '@/components/PixelBackground';
@@ -42,7 +41,7 @@ export default function HakkimizdaClient({ locale, dict }: { locale: 'tr' | 'en'
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div {...fadeInUp} className="space-y-8 max-w-4xl">
+          <motion.div initial="initial" whileInView="whileInView" variants={fadeInUp} className="space-y-8 max-w-4xl">
             <span className="text-primary text-xs font-black uppercase tracking-[0.5em] font-mono block">
               // {isTr ? 'hikayemiz' : 'our story'}
             </span>
@@ -65,7 +64,7 @@ export default function HakkimizdaClient({ locale, dict }: { locale: 'tr' | 'en'
           
           {/* Main Story Area */}
           <div className="lg:col-span-8 space-y-12">
-            <motion.div {...fadeInUp} className="prose prose-invert prose-primary max-w-none">
+            <motion.div initial="initial" whileInView="whileInView" variants={fadeInUp} className="prose prose-invert prose-primary max-w-none">
               <h2 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter text-white mb-8">
                 {isTr ? 'Dijital Bir Devrimin Parçası Olun' : 'Part of a Digital Revolution'}
               </h2>
@@ -156,7 +155,7 @@ export default function HakkimizdaClient({ locale, dict }: { locale: 'tr' | 'en'
       {/* Mission Section */}
       <section className="py-32 px-6">
         <div className="max-w-5xl mx-auto text-center space-y-12">
-          <motion.div {...fadeInUp} className="space-y-6">
+          <motion.div initial="initial" whileInView="whileInView" variants={fadeInUp} className="space-y-6">
             <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter">
               {isTr ? 'Sadece Bir Ajans Değil,' : 'Not Just An Agency,'} <br />
               <span className="text-primary">{isTr ? 'Büyüme Ortağınız.' : 'Your Growth Partner.'}</span>
