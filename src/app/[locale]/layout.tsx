@@ -7,14 +7,14 @@ const jersey10 = Jersey_10({
   weight: "400",
   subsets: ["latin", "latin-ext"],
   variable: "--font-jersey",
-  display: "swap",
+  display: "block",
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin", "latin-ext"],
   variable: "--font-mono",
-  display: "swap",
+  display: "block",
 });
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
