@@ -28,14 +28,14 @@ model User {
 }
 
 model Post {
-  id          String   @id @default(cuid())
-  title       String
-  slug        String   @unique
-  excerpt     String   @db.Text // Kısa özet
-  content     String   @db.LongText // Ana içerik
-  image       String?  // Kapak görseli URL
-  category    String   @default("Genel")
-  published   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  excerpt   String   @db.Text
+  content   String   @db.LongText
+  image     String?
+  category  String   @default("Genel")
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

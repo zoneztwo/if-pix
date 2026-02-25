@@ -92,14 +92,14 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
                       <span className="text-sm font-black uppercase tracking-widest">{lead.plan} PAKETİ</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {(lead.features as string[]).map((feat, i) => (
+                      {(lead.features as unknown as string[]).map((feat, i) => (
                         <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-[10px] font-bold text-white/60 uppercase italic">
                           {feat}
                         </span>
                       ))}
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {(lead.marketing as string[]).map((mark, i) => (
+                      {(lead.marketing as unknown as string[]).map((mark, i) => (
                         <span key={i} className="px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-lg text-[10px] font-black text-primary uppercase italic">
                           {mark}
                         </span>
