@@ -2,7 +2,7 @@ name: Deploy IFPIX to Hostinger
 
 on:
   push:
-    branches: [ main ] # Sadece main branch'e push yapınca çalışır
+    branches: [ master ] # Projenizin ana dalı master olduğu için güncellendi
 
 jobs:
   build-and-deploy:
