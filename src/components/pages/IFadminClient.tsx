@@ -31,8 +31,21 @@ export default function IFadminClient({ leads: initialLeads, locale }: { leads: 
   });
 
   useEffect(() => {
-    if (activeTab === 'users') fetchUsers();
-    if (activeTab === 'posts') fetchPosts();
+    // Verileri aynı anda değil, sırayla ve sadece aktif sekmeye göre çek
+    const loadData = async () => {
+      if (activeTab === 'users') {
+        setLoading(true);
+        await fetchUsers();
+        setLoading(false);
+      }
+      if (activeTab === 'posts') {
+        setLoading(true);
+        await fetchPosts();
+        setLoading(false);
+      }
+    };
+    
+    loadData();
   }, [activeTab]);
 
   const fetchUsers = async () => {
