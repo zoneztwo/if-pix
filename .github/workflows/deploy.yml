@@ -2,7 +2,7 @@ name: Deploy IFPIX to Hostinger
 
 on:
   push:
-    branches: [ master ] # Projenizin ana dalı master olduğu için güncellendi
+    branches: [ master ]
 
 jobs:
   build-and-deploy:
@@ -15,26 +15,34 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Node sürümünüzü buraya göre güncelleyebilirsiniz
+          node-version: '20'
           cache: 'npm'
 
       - name: Install Dependencies
         run: npm ci
 
+      - name: Generate Prisma Client
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: npx prisma generate
+
       - name: Build Next.js
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }} # Build sırasında Prisma için gerekli
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
         run: npm run build
 
       - name: Prepare Standalone for Deployment
         run: |
           mkdir -p deploy
+          # 1. Standalone içindeki tüm dosyaları kopyala (server.js, node_modules vb.)
           cp -r .next/standalone/* deploy/
+          # 2. Statik dosyaları taşı (Hostinger'ın Next.js'i sunabilmesi için şart)
+          mkdir -p deploy/.next
           cp -r .next/static deploy/.next/
           cp -r public deploy/
-          # Hostinger'ın ana dizinde beklediği server.js dosyasını standalone'dan kopyala
-          cp .next/standalone/server.js deploy/server.js
+          # 3. Prisma klasörünü zorla kopyala (503 hatasının en büyük sebebi Prisma Engine eksikliğidir)
+          cp -r prisma deploy/
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -43,5 +51,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./deploy/
-          server-dir: ./ # Hostinger'da Node.js uygulamanızın olduğu ana dizin
-          dangerous-clean-slate: false # Eski dosyaları silmek istemiyorsanız false kalsın
+          server-dir: ./
+          dangerous-clean-slate: false
