@@ -30,7 +30,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // API veya statik dosyalar haricindeki tüm rotalar
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Önemli: Sadece gerçek sayfalar için çalıştır, statik dosyaları kesinlikle atla
+    '/((?!api|_next/static|_next/image|favicon.ico|logo/|fonts/|.*\\..*).*)',
   ],
 };
