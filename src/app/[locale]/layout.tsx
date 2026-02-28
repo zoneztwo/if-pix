@@ -93,7 +93,7 @@ export default async function RootLayout({
               "image": "https://ifpix.web/logo/mainlogo-ifpix.webp",
               "description": "Profesyonel web tasarım, yazılım ve performans pazarlama ajansı.",
               "url": "https://ifpix.web",
-              "telephone": "+905300000000",
+              "telephone": "+905535722020",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Istanbul",

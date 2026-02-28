@@ -63,7 +63,7 @@ const ProjectTabs = () => {
                     Talep Üzerine Geliştirilir
                   </div>
                   <a 
-                    href="https://wa.me/90XXXXXXXXXX"
+                    href="https://wa.me/905422264012"
                     className="flex items-center gap-3 px-8 py-4 bg-primary text-background rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-[0_0_30px_rgba(57,255,94,0.2)]"
                   >
                     Teknik Detay Alın

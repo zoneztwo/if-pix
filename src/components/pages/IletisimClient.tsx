@@ -13,8 +13,8 @@ export default function IletisimClient({ locale, dict }: { locale: 'tr' | 'en', 
     { 
       icon: Phone, 
       label: locale === 'tr' ? "Bizi Arayın" : "Call Us", 
-      value: "+90 (555) 000 00 00",
-      href: "tel:+905550000000"
+      value: "+90 (553) 572 20 20",
+      href: "tel:+905535722020"
     },
     { 
       icon: Mail, 

@@ -7,14 +7,38 @@ import { Send, User, Mail, Phone, Building2, CheckCircle2 } from 'lucide-react';
 const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    company: ''
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simüle edilen gönderim süreci
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    setIsSubmitted(true);
+    
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          formType: 'İletişim Formu'
+        })
+      });
+
+      if (res.ok) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error('API Error');
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Bir hata oluştu, lütfen tekrar deneyin.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -56,6 +80,8 @@ const ContactForm = () => {
                 required
                 type="text"
                 placeholder="Adınız Soyadınız"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all"
               />
             </div>
@@ -70,6 +96,8 @@ const ContactForm = () => {
                 required
                 type="tel"
                 placeholder="05xx xxx xx xx"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all"
               />
             </div>
@@ -85,6 +113,8 @@ const ContactForm = () => {
               required
               type="email"
               placeholder="ornek@mail.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all"
             />
           </div>
@@ -98,6 +128,8 @@ const ContactForm = () => {
             <input 
               type="text"
               placeholder="Şirket Adı"
+              value={formData.company}
+              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all"
             />
           </div>

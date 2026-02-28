@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const WhatsAppFAB = () => {
-  const whatsappUrl = "https://wa.me/905300000000?text=" + encodeURIComponent("Merhaba IFPIX, web sitesi çözümleriniz ve reklam hizmetleriniz hakkında bilgi almak istiyorum.");
+  const whatsappUrl = "https://wa.me/905422264012?text=" + encodeURIComponent("Merhaba IFPIX, web sitesi çözümleriniz ve reklam hizmetleriniz hakkında bilgi almak istiyorum.");
   
   return (
     <motion.a

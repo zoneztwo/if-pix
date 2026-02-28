@@ -39,7 +39,7 @@ const Footer = () => {
           <h4 className="text-primary text-xs font-black uppercase tracking-[0.2em]">İletişim</h4>
           <div className="flex flex-col gap-4 text-sm text-white/50 font-mono text-[11px]">
             <p>hello@ifpix.web</p>
-            <p>+90 (530) 000 00 00</p>
+            <p>+90 (553) 572 20 20</p>
             <p>İstanbul, Türkiye</p>
           </div>
         </div>

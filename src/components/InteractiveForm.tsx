@@ -71,10 +71,28 @@ const InteractiveForm = ({ dict, locale }: InteractiveFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setIsLoading(false);
-    setIsSubmitted(true);
+    
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          formType: 'İnteraktif Form (Sihirbaz)'
+        })
+      });
+
+      if (res.ok) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error('API Error');
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert(locale === 'tr' ? "Bir hata oluştu, lütfen tekrar deneyin." : "An error occurred, please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const renderProgress = () => {
