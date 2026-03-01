@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PixelBackground from '@/components/PixelBackground';
 import ContactForm from '@/components/ContactForm';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Instagram, Facebook, Linkedin } from 'lucide-react';
 
 export default function IletisimClient({ locale, dict }: { locale: 'tr' | 'en', dict: any }) {
   const contactInfo = [
@@ -28,6 +28,12 @@ export default function IletisimClient({ locale, dict }: { locale: 'tr' | 'en', 
       value: locale === 'tr' ? "İstanbul, Türkiye" : "Istanbul, Turkey",
       href: "https://maps.google.com"
     }
+  ];
+
+  const socialLinks = [
+    { icon: Instagram, href: "https://www.instagram.com/ifpix.agency/", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/ifpix", label: "Facebook" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/ifpix", label: "LinkedIn" }
   ];
 
   return (
@@ -97,6 +103,25 @@ export default function IletisimClient({ locale, dict }: { locale: 'tr' | 'en', 
                   </div>
                 </motion.a>
               ))}
+
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                className="pt-8 border-t border-white/5 flex gap-4"
+              >
+                {socialLinks.map((social, idx) => (
+                  <a 
+                    key={idx} 
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 hover:bg-primary/10 transition-all group"
+                  >
+                    <social.icon size={20} className="group-hover:scale-110 transition-transform" />
+                  </a>
+                ))}
+              </motion.div>
             </div>
           </div>
 

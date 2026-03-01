@@ -4,10 +4,17 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] || 'tr';
+
+  const socialLinks = [
+    { icon: Instagram, href: "https://www.instagram.com/ifpix.agency/", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/ifpix", label: "Facebook" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/ifpix", label: "LinkedIn" }
+  ];
 
   return (
     <footer className="w-full bg-black/40 border-t border-white/5 py-20 px-10">
@@ -23,6 +30,21 @@ const Footer = () => {
           <p className="text-secondary max-w-sm text-sm leading-relaxed">
             Dijital dünyada iz bırakmanız için modern, hızlı ve kullanıcı odaklı web çözümleri geliştiriyoruz. Her pikselde kalite, her kodda performans.
           </p>
+          
+          <div className="flex gap-4 pt-4">
+            {socialLinks.map((social, idx) => (
+              <a 
+                key={idx} 
+                href={social.href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 hover:bg-primary/10 transition-all group"
+                aria-label={social.label}
+              >
+                <social.icon size={18} className="group-hover:scale-110 transition-transform" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="space-y-6">

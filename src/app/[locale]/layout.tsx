@@ -101,7 +101,8 @@ export default async function RootLayout({
               },
               "priceRange": "$$$",
               "sameAs": [
-                "https://www.instagram.com/ifpix",
+                "https://www.instagram.com/ifpix.agency/",
+                "https://www.facebook.com/ifpix",
                 "https://www.linkedin.com/company/ifpix"
               ]
             })

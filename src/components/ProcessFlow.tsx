@@ -252,7 +252,7 @@ const ProcessFlow = ({ sectorId = 'hizmet' }: { sectorId?: string }) => {
                         </div>
                         {[
                           { label: 'Hemen Ara', href: 'tel:+905535722020', icon: Phone, color: 'text-blue-500' },
-                          { label: "WhatsApp", href: 'https://wa.me/905422264012', isWA: true, color: 'text-green-500' },
+                          { label: "WhatsApp", href: 'https://wa.me/905422640122', isWA: true, color: 'text-green-500' },
                           { label: 'Toplantı', href: '/toplanti-talebi', icon: Calendar, color: 'text-purple-500' }
                         ].map((item, i) => {
                           const Icon = item.icon;
