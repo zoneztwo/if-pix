@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { prisma } from "@/lib/prisma";
 
 export const dynamic = 'force-dynamic';
 
@@ -19,27 +18,7 @@ export async function POST(request: Request) {
       ...metadata 
     } = body;
 
-    // 1. Veritabanına Kaydet
-    try {
-      await prisma.lead.create({
-        data: {
-          name: name || null,
-          phone: phone || null,
-          email: email || null,
-          plan: plan || null,
-          features: features || null,
-          marketing: marketing || null,
-          marketingConsent: Boolean(marketingConsent),
-          formType: formType || 'Teklif',
-          metadata: metadata || null,
-        }
-      });
-    } catch (dbError) {
-      console.error("DATABASE_SAVE_ERROR:", dbError);
-      // Veritabanı hatası olsa bile mail atmaya devam etmesi için burada kesmiyoruz
-    }
-
-    // 2. Mail Gönder
+    // 1. Mail Gönder
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || "smtp.hostinger.com",
       port: Number(process.env.SMTP_PORT) || 465,
